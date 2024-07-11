@@ -1,0 +1,76 @@
+.header {
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  right: 0px;
+  width: 100%;
+  height: 33px;
+  display: block;
+  z-index: 999;
+  font-size: 18px;
+  font-weight: 600;
+  color: #FFF200;
+  margin: 0px;
+  background-color:rgba(0, 0, 0,0.8);
+  padding: 7px 20px 7px 78px;
+  box-shadow: 0px 1px 3px #333;
+}
+
+.header .rightmenu {
+  position: relative;
+  font-size: 12px;
+  font-weight: 400;
+  float: right;
+  margin-right: 20px;
+}
+
+.header .rightmenu svg{
+  display: inline-block;
+  margin-left: 15px;
+}
+
+.user-details {
+  display: none;
+  position: absolute;
+  top: 23px;
+  right: 0;
+  left: auto;
+  background-color: #515151;
+  padding: 10px 15px;
+  border-radius: 5px;
+  box-shadow: 1px 2px 3px #000;
+  width: 200px;
+}
+
+.rightmenu svg#user-icon:hover + .user-details, .user-details:hover {
+  display: block;
+}
+
+.user-name {
+  border-bottom: 1px solid #666;
+  padding-bottom: 5px;
+}
+
+.user-email {
+  padding-top: 5px;
+}
+
+.user-name span, .user-email span {
+  display: inline-block;
+    width: 25px;
+    text-align: left;
+    padding: 0 0 0 0;
+    margin: 0 16px 0 -14px;
+}
+
+.caret {
+  position: absolute;
+    top: -11px;
+    right: 6px;
+    left: auto;
+    color: #515151;
+}
+
+
+
+

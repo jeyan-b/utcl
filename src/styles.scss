@@ -1,1 +1,29 @@
 /* You can add global styles to this file, and also import other style files */
+
+// @import '~@fortawesome/fontawesome-free/css/all.css';
+
+// html, body { 
+//     height: 100vh; 
+//     background-color: #EAEAEA; 
+//     margin: 0;
+//     padding: 0;
+// }
+body { 
+  margin: 0; 
+  font-family: Roboto, "Helvetica Neue", sans-serif; 
+  height: 100vh; 
+  background-image: url(assets/img/rmc-grey-bg5.png);
+  overflow: hidden;
+}
+
+.container {
+  margin: 0px !important;
+  padding: 0px !important;
+  max-width: 100%;
+}
+
+@media  screen and (max-width:845px) {
+  body {
+    overflow: auto
+  }
+}

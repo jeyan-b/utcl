@@ -1,0 +1,33 @@
+<form [formGroup]="dynamicForm">
+  <mat-card class="cardMargin">
+    <mat-card-header class="cardHeader">
+      <mat-card-title>Dynamic Controls</mat-card-title>
+    </mat-card-header>
+
+    <mat-card-content class="contentMargin">
+      <ng-container *ngFor="let control of controls">
+        <mat-form-field *ngIf="control.type === 'text'" class="controlMargin">
+          <input matInput [placeholder]="control.placeholder" [formControlName]="control.controlName">
+        </mat-form-field>
+        <mat-form-field *ngIf="control.type === 'number'" class="controlMargin">
+          <input matInput type="number" [placeholder]="control.placeholder" [formControlName]="control.controlName">
+        </mat-form-field>
+        <mat-form-field *ngIf="control.type === 'select'" class="controlMargin">
+          <mat-label>{{control.placeholder}}</mat-label>
+          <mat-select name="food" [formControlName]="control.controlName">
+            @for (food of foods; track food) {
+            <mat-option [value]="food.value">{{food.viewValue}}</mat-option>
+            }
+          </mat-select>
+        </mat-form-field>
+        <!-- Add more control types as needed -->
+      </ng-container>
+    </mat-card-content>
+    <mat-card-actions align="end" class="cardHeader">
+      <button mat-flat-button color="primary" [disabled]="dynamicForm.invalid">Submit</button>
+      <button mat-flat-button color="warn" class="buttonMargin">Cancel</button>
+    </mat-card-actions>
+  </mat-card>
+</form>
+<!-- </div>
+</div> -->

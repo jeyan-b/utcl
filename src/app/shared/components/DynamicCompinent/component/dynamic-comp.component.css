@@ -1,0 +1,35 @@
+.dynamic-content-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.dynamic-input {
+  margin-bottom: 10px;
+}
+
+.cardMargin {
+  margin: 30px 30px 30px 30px;
+}
+
+.cardHeader {
+  background-color: beige;
+}
+
+.contentMargin {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  background-color: antiquewhite;
+}
+.controlMargin {
+  margin-left: 30px;
+  margin-top: 20px;
+}
+
+.selectControlMargin {
+  margin-left: 30px;
+  margin-top: 50px;
+}
+
+.buttonMargin {
+  margin-left: 10px;
+}

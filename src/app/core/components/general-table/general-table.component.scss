@@ -1,0 +1,85 @@
+.mat-mdc-form-field{
+  width: 100%;
+  height: 55px;
+}
+.full-width-table {
+  width: 100%;
+}
+
+.search-filter {
+  width: 100%;
+  height: 45px;
+  position: sticky;
+  top: 0;
+  z-index: 9;
+}
+
+
+::ng-deep mat-sort-header .mat-sort-header-arrow {
+  color: white;
+}
+
+::ng-deep .mdc-text-field--outlined .mat-mdc-form-field-infix, 
+::ng-deep .mdc-text-field--no-label .mat-mdc-form-field-infix {
+  padding-top: 5px !important;
+}
+
+.mat-mdc-table thead {
+  background-color: #757575 !important;
+}
+
+.mat-mdc-table .mat-mdc-header-cell {
+  background: #af170f;
+  color: #fff;
+  font-size: 11px;
+  padding: 5px 4px;
+}
+
+.mat-mdc-header-row {
+  height: 40px;
+  position: sticky;
+  top: 0;
+  z-index: 7;
+}
+
+.mat-mdc-row {
+  height: 35px;
+}
+
+::ng-deep .mat-mdc-table {
+  height: 200px;
+  overflow-y: auto;
+  display: block;
+  padding: 0px !important;
+}
+
+::ng-deep table.mat-mdc-table tbody.mdc-data-table__content{
+  height: 100px;
+  overflow-y: auto;
+  top: 0;
+}
+
+// Scroll bar CSS
+
+#style-2::-webkit-scrollbar-track
+{
+	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+  width: 8px;
+	border-radius: 10px;
+	background-color: #F5F5F5;
+ 
+}
+
+#style-2::-webkit-scrollbar
+{
+	width: 18px;
+	background-color: #F5F5F5;
+}
+
+#style-2::-webkit-scrollbar-thumb
+{
+	border-radius: 10px;
+	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
+	background-color: #bebebe;
+}
+ 

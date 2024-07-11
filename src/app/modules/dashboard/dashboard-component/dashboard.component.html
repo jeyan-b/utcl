@@ -1,0 +1,40 @@
+<div class="dashboard">
+  <div class="top-marquee">
+    <marquee>Welcome to Unified Vendor Portal</marquee>
+  </div>
+
+  <div class="month-filter">
+    <form action="#">
+      <mat-form-field appearance="outline">
+        <mat-select [(value)]="selected">
+          <mat-option value="volvo"> Current Month </mat-option>
+          <mat-option value="saab"> Last 3 Months</mat-option>
+          <mat-option value="opel"> Last 6 Months </mat-option>
+          <mat-option value="volvo"> Last 1 year </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </form>
+  </div>
+
+  <div class="db-block">
+    <canvas id="barchart" (click)="openDialog('barchart')"></canvas>
+  </div>
+  <div class="db-block">
+    <canvas id="piechart" (click)="openDialog('piechart')"></canvas>
+  </div>
+  <div class="db-block">
+    <canvas id="dochart" (click)="openDialog('dochart')"></canvas>
+  </div>
+  <div class="db-block">
+    <canvas id="pochart" (click)="openDialog('pochart')"></canvas>
+  </div>
+  <div class="db-block">
+    <canvas id="radarchart" (click)="openDialog('radarchart')"></canvas>
+  </div>
+  <div class="db-block">
+    <canvas id="linechart" (click)="openDialog('linechart')"></canvas>
+  </div>
+</div>
+<div>
+
+</div>

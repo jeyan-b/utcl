@@ -1,0 +1,1165 @@
+
+  <div class="search-panel">
+    <div class="loi-list-button">
+      <button class="llbtn">
+        <svg xmlns="http://www.w3.org/2000/svg" height="15px" viewBox="0 -960 960 960" width="18px" fill="#fff200"><path d="M288-600v-72h528v72H288Zm0 156v-72h528v72H288Zm0 156v-72h528v72H288ZM180-600q-14 0-25-11t-11-25.5q0-14.5 11-25t25.5-10.5q14.5 0 25 10.35T216-636q0 14-10.35 25T180-600Zm0 156q-14 0-25-11t-11-25.5q0-14.5 11-25t25.5-10.5q14.5 0 25 10.35T216-480q0 14-10.35 25T180-444Zm0 156q-14 0-25-11t-11-25.5q0-14.5 11-25t25.5-10.5q14.5 0 25 10.35T216-324q0 14-10.35 25T180-288Z"/></svg>
+        LOI List
+      </button>
+    </div>
+    <div class="notification-text" *ngIf="successNotification">
+      <div class="green-text">Agency Data is Saved!</div>
+    </div>
+    <app-spinner-component></app-spinner-component>
+    <mat-tab-group [selectedIndex]="selectedTab.value" (selectedIndexChange)="selectedTab.setValue($event)">
+      <mat-tab label="Agency" id="style-2">
+
+        <form [formGroup]="agencyForm" class="search-box margin-bottom-20px">
+          <mat-form-field appearance="outline">
+            <mat-select placeholder="Vendor Code" formControlName="agency_vendor">
+              <mat-option value="Vendor Code 1"> Vendor Code 1 </mat-option>
+              <mat-option value="Vendor Code 2"> Vendor Code 2 </mat-option>
+              <mat-option value="Vendor Code 3"> Vendor Code 3 </mat-option>
+            </mat-select>
+            <span class="text-danger error-message"
+                                *ngIf="(agencyForm.controls['agency_vendor'].touched) && agencyForm.controls['agency_vendor'].errors?.['required']">
+                                Vendor is required
+                            </span>
+          </mat-form-field>
+          <mat-form-field appearance="outline">
+            <mat-select placeholder="Agency Name" formControlName="agency_agencyName">
+              <mat-option value="Agency Name 1"> Agency Name 1 </mat-option>
+              <mat-option value="Agency Name 2"> Agency Name 2 </mat-option>
+              <mat-option value="Agency Name 3"> Agency Name 3 </mat-option>
+            </mat-select>
+            <span class="text-danger error-message"
+                                *ngIf="(agencyForm.controls['agency_agencyName'].touched) && agencyForm.controls['agency_agencyName'].errors?.['required']">
+                                Name is required
+                            </span>
+          </mat-form-field>
+
+          <mat-form-field appearance="outline">
+            <mat-select placeholder="State" formControlName="agency_state">
+              <mat-option value="State 1"> State 1 </mat-option>
+              <mat-option value="State 2"> State 2 </mat-option>
+              <mat-option value="State 3"> State 3 </mat-option>
+            </mat-select>
+            <span class="text-danger error-message"
+                                *ngIf="(agencyForm.controls['agency_state'].touched) && agencyForm.controls['agency_state'].errors?.['required']">
+                                State is required
+                            </span>
+          </mat-form-field>
+
+          <mat-form-field appearance="outline">
+            <mat-select placeholder="Region" formControlName="agency_region">
+              <mat-option value="Region 1"> Region 1 </mat-option>
+              <mat-option value="Region 2"> Region 2 </mat-option>
+              <mat-option value="Region 3"> Region 3 </mat-option>
+              <mat-option value="Region 4"> Region 4 </mat-option>
+            </mat-select>
+            <span class="text-danger error-message"
+                                *ngIf="(agencyForm.controls['agency_region'].touched) && agencyForm.controls['agency_region'].errors?.['required']">
+                                Region is required
+                            </span>
+          </mat-form-field>
+
+          <mat-form-field appearance="outline">
+            <mat-select placeholder="Depot" formControlName="agency_depot">
+              <mat-option value="Depot 1"> Depot 1 </mat-option>
+              <mat-option value="Depot 2"> Depot 2 </mat-option>
+              <mat-option value="Depot 3"> Depot 3 </mat-option>
+              <mat-option value="Depot 4"> Depot 4 </mat-option>
+            </mat-select>
+            <span class="text-danger error-message"
+                                *ngIf="(agencyForm.controls['agency_depot'].touched) && agencyForm.controls['agency_depot'].errors?.['required']">
+                                Depot is required
+                            </span>
+          </mat-form-field>
+
+          <mat-form-field appearance="outline">
+            <mat-select placeholder="District" formControlName="agency_district">
+              <mat-option value="District 1"> District 1 </mat-option>
+              <mat-option value="District 2"> District 2 </mat-option>
+              <mat-option value="District 3"> District 3 </mat-option>
+              <mat-option value="District 4"> District 4 </mat-option>
+            </mat-select>
+            <span class="text-danger error-message"
+                                *ngIf="(agencyForm.controls['agency_district'].touched) && agencyForm.controls['agency_district'].errors?.['required']">
+                                District is required
+                            </span>
+          </mat-form-field>
+        </form>
+
+        <hr>
+
+        <div class="buttons" *ngIf="!isAgencyDataSaved">
+
+          <button class="save-draft" (click)="xpandStatus = xpandStatus ? false : true; saveAgency()" [disabled]="!agencyForm.valid">
+            <svg xmlns="http://www.w3.org/2000/svg" height="18px" viewBox="0 -960 960 960" width="24px" fill="#fff200"><path d="M200-120v-640q0-33 23.5-56.5T280-840h400q33 0 56.5 23.5T760-760v640L480-240 200-120Zm80-122 200-86 200 86v-518H280v518Zm0-518h400-400Z"/></svg>
+            Save as Draft
+          </button>
+          <button class="save-next-prev" (click)="saveAgencyMoveToNext()">
+
+            Save
+            <svg xmlns="http://www.w3.org/2000/svg" height="18px" viewBox="0 -960 960 960" width="24px" fill="#5f6368"><path d="M504-480 320-664l56-56 240 240-240 240-56-56 184-184Z"/></svg>
+          </button>
+        </div>
+        <div class="buttons" *ngIf="isAgencyDataSaved">
+
+          <div class="data-saved">Agency Data is Saved!</div>
+          <button class="save-next-prev" (click)="goToNextTab()">
+
+            Next
+            <svg xmlns="http://www.w3.org/2000/svg" height="18px" viewBox="0 -960 960 960" width="24px" fill="#5f6368"><path d="M504-480 320-664l56-56 240 240-240 240-56-56 184-184Z"/></svg>
+          </button>
+        </div>
+
+
+      </mat-tab>
+
+      <mat-tab label="Agent and Agreement Details">
+
+          <div class="ccnf-address">
+            <div class="ccnf-address-sec">
+              <div class="ccnf-address-tittle">
+                Vendor Code
+              </div>
+              <div class="ccnf-address-text">
+                562988698
+              </div>
+            </div>
+
+            <div class="ccnf-address-sec">
+              <div class="ccnf-address-tittle">
+                Address
+              </div>
+              <div class="ccnf-address-text">
+                Laxmi Traders, Sector-14, Gokhale Road, Pune
+              </div>
+            </div>
+
+            <div class="ccnf-address-sec">
+              <div class="ccnf-address-tittle">
+                City
+              </div>
+              <div class="ccnf-address-text">
+                Pune
+              </div>
+            </div>
+
+            <div class="ccnf-address-sec">
+              <div class="ccnf-address-tittle">
+                Pincode
+              </div>
+              <div class="ccnf-address-text">
+                411033
+              </div>
+            </div>
+
+            <div class="ccnf-address-sec left-border-grey">
+              <div class="ccnf-address-tittle">
+                Vendor GST No.
+              </div>
+              <div class="ccnf-address-text">
+                57320865
+              </div>
+            </div>
+
+            <div class="ccnf-address-sec">
+              <div class="ccnf-address-tittle">
+                Vendor PAN
+              </div>
+              <div class="ccnf-address-text">
+                ASD423KJJ
+              </div>
+            </div>
+
+            <div class="ccnf-address-sec left-border-grey">
+              <div class="ccnf-address-tittle">
+                Storage Location Name
+              </div>
+              <div class="ccnf-address-text">
+                Pune
+              </div>
+            </div>
+
+            <div class="ccnf-address-sec">
+              <div class="ccnf-address-tittle">
+                SLOC Code
+              </div>
+              <div class="ccnf-address-text">
+                123456
+              </div>
+            </div>
+          </div>
+
+          <div class="ccnf-address-tittle">
+            Agreement Period
+          </div>
+
+          <div class="left-align-flex border-bottom margin-bottom-20px padding-bottom-15px">
+            <form action="#" class="search-box">
+              <mat-form-field>
+                <mat-label>Start date</mat-label>
+                <input matInput [matDatepicker]="picker1">
+                <mat-hint>MM/DD/YYYY</mat-hint>
+                <mat-datepicker-toggle matIconSuffix [for]="picker1"></mat-datepicker-toggle>
+                <mat-datepicker #picker1></mat-datepicker>
+              </mat-form-field>
+
+              <mat-form-field>
+                <mat-label>End date</mat-label>
+                <input matInput [matDatepicker]="picker2">
+                <mat-hint>MM/DD/YYYY</mat-hint>
+                <mat-datepicker-toggle matIconSuffix [for]="picker2"></mat-datepicker-toggle>
+                <mat-datepicker #picker2></mat-datepicker>
+              </mat-form-field>
+
+            <div class="ccnf-address-sec">
+              <div class="ccnf-address-tittle">
+                Total Period
+              </div>
+              <div class="ccnf-address-text">
+                2 Years
+              </div>
+            </div>
+
+
+          </form>
+          </div>
+
+          <div class="ccnf-address-tittle">
+            Billing Cycle
+          </div>
+
+          <div class="left-align-flex border-bottom margin-bottom-20px padding-bottom-15px">
+            <form action="#" class="search-box">
+
+              <mat-form-field appearance="outline">
+                <mat-select placeholder="Monthly">
+                  <mat-option value="volvo"> Weekly </mat-option>
+                  <mat-option value="saab"> Fortnightly </mat-option>
+                  <!-- <mat-option value="opel"> Custom </mat-option> -->
+                </mat-select>
+              </mat-form-field>
+
+              <div class="ccnf-address-text">
+                Monthly Cycle is from 1st of every month to last date of the month
+              </div>
+
+              <!-- <mat-form-field>
+                <mat-label>Start date</mat-label>
+                <input matInput [matDatepicker]="picker3">
+                <-- <mat-hint>MM/DD/YYYY</mat-hint> --
+                <mat-datepicker-toggle matIconSuffix [for]="picker3"></mat-datepicker-toggle>
+                <mat-datepicker #picker3></mat-datepicker>
+              </mat-form-field> -->
+          </form>
+          </div>
+
+          <div class="buttons">
+              <!-- <button class="save-next-prev">
+                <svg xmlns="http://www.w3.org/2000/svg" height="18px" viewBox="0 -960 960 960" width="24px" fill="#5f6368"><path d="M560-240 320-480l240-240 56 56-184 184 184 184-56 56Z"/></svg>
+                Previous
+              </button> -->
+
+              <button class="save-draft" (click)="xpandStatus = xpandStatus ? false : true">
+                <svg xmlns="http://www.w3.org/2000/svg" height="18px" viewBox="0 -960 960 960" width="24px" fill="#fff200"><path d="M200-120v-640q0-33 23.5-56.5T280-840h400q33 0 56.5 23.5T760-760v640L480-240 200-120Zm80-122 200-86 200 86v-518H280v518Zm0-518h400-400Z"/></svg>
+                Save as Draft
+              </button>
+              <button class="save-next-prev">
+                Save & Next
+                <svg xmlns="http://www.w3.org/2000/svg" height="18px" viewBox="0 -960 960 960" width="24px" fill="#5f6368"><path d="M504-480 320-664l56-56 240 240-240 240-56-56 184-184Z"/></svg>
+              </button>
+          </div>
+
+      </mat-tab>
+
+      <mat-tab label="CCnF Commission">
+        <div class="slab-commission-sec">
+          <div class="slab-sec">
+            <div class="ccnf-address-tittle">
+              Slab Wise Commision
+            </div>
+
+            <div class="slab-range">
+              <div class="ccnf-address-tittle width-200px align-item-center margin-top-15px">
+                Commision Range
+              </div>
+
+              <mat-form-field class="example-full-width">
+                <input matInput type="number">
+              </mat-form-field>
+
+              <span class="to">To</span>
+
+              <mat-form-field class="example-full-width">
+                <input matInput type="number">
+              </mat-form-field>
+
+            </div>
+
+            <div class="slab-fields-saved">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Slab (MT)From</th>
+                    <th>Slab (MT)To</th>
+                    <th>Commission</th>
+                    <th class="width-50px">Add</th>
+                    <th class="width-50px">Delete</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>0</td>
+                    <td>1000</td>
+                    <td>Rs. 25</td>
+                    <td>
+                      <div class="add-button">
+                        <button mat-fab (click)="openLoiDetail()" class="add">
+                          <mat-icon>add</mat-icon>
+                        </button>
+
+                      </div>
+                    </td>
+                    <td>
+                      <div class="add-button">
+                        <button mat-mini-fab aria-label="Add Button" class="delete">
+                          <mat-icon>delete</mat-icon>
+                        </button>
+                      </div>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <!-- <div class="slab-fields-sec">
+              <div class="slab-fields">
+                <mat-form-field class="example-full-width">
+                  <input matInput type="number">
+                </mat-form-field>
+
+                <span class="to">To</span>
+
+                <mat-form-field class="example-full-width">
+                  <input matInput type="number">
+                </mat-form-field>
+
+                <mat-form-field class="example-full-width right-align-item">
+                  <input matInput type="number">
+                </mat-form-field>
+
+                <div class="add-button">
+                  <button mat-mini-fab aria-label="Add Button" class="add">
+                    <mat-icon>add</mat-icon>
+                  </button>
+                </div>
+
+                <div class="add-button">
+                  <button mat-mini-fab aria-label="Add Button" class="delete">
+                    <mat-icon>delete</mat-icon>
+                  </button>
+                </div>
+              </div>
+            </div> -->
+
+          </div>
+
+          <div class="slab-sec padding-left-20px left-border-orange">
+
+            <div class="metro-commision">
+              <div class="metro-commision-item">
+                <div class="slab-field-title width-200px">
+                  Metro City Commission
+                </div>
+                <div class="slab-title-text">
+                  <mat-radio-group aria-label="Select an option">
+                    <mat-radio-button value="1" checked="true" class="yellow-radio">Yes</mat-radio-button>
+                    <mat-radio-button value="2">No</mat-radio-button>
+                  </mat-radio-group>
+                </div>
+              </div>
+
+              <div class="metro-commision-item">
+                <div class="slab-field-title width-200px">
+                  Commission Value
+                </div>
+                <div class="slab-title-text padding-left-10px">
+                  <mat-form-field class="example-full-width width-125px">
+                    <input matInput type="number">
+                  </mat-form-field>
+                </div>
+              </div>
+
+              <div class="metro-commision-item margin-top-15px">
+                <div class="slab-field-title width-200px align-item-center">
+                  Apply Minimum Commission
+                </div>
+                <div class="slab-title-text">
+                  <mat-radio-group aria-label="Select an option">
+                    <mat-radio-button value="1" checked="true" class="yellow-radio">Yes</mat-radio-button>
+                    <mat-radio-button value="2">No</mat-radio-button>
+                  </mat-radio-group>
+                </div>
+              </div>
+
+            </div>
+
+            <div class="slab-fields">
+              <div class="slab-field-title width-200px align-item-center margin">
+                Minimum Commission Slab
+              </div>
+              <mat-form-field class="example-full-width margin-left-10px">
+                <input matInput type="number">
+              </mat-form-field>
+            </div>
+
+            <div class="slab-fields-saved">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Slab (MT)From</th>
+                    <th>Slab (MT)To</th>
+                    <th>Commission</th>
+                    <th class="width-50px">Add</th>
+                    <th class="width-50px">Delete</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>0</td>
+                    <td>1000</td>
+                    <td>Rs. 25</td>
+                    <td>
+                      <div class="add-button">
+                        <button mat-fab (click)="openLoiDetail()" class="add">
+                          <mat-icon>add</mat-icon>
+                        </button>
+
+                      </div>
+                    </td>
+                    <td>
+                      <div class="add-button">
+                        <button mat-mini-fab aria-label="Add Button" class="delete">
+                          <mat-icon>delete</mat-icon>
+                        </button>
+                      </div>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+
+          </div>
+
+        </div>
+
+        <hr>
+
+        <div class="slab-commission-sec">
+          <div class="slab-sec">
+            <div class="metro-commission">
+              <div class="metro-commision-item">
+                <div class="slab-field-title width-200px">
+                  GU/BT handled by CCnF?
+                </div>
+                <div class="slab-field-text">
+                  <mat-radio-group aria-label="Select an option">
+                    <mat-radio-button value="1" checked="true" class="yellow-radio">Yes</mat-radio-button>
+                    <mat-radio-button value="2">No</mat-radio-button>
+                  </mat-radio-group>
+                </div>
+              </div>
+
+              <div class="metro-commision-item">
+                <div class="slab-field-title width-200px">
+                  GU/BT Plant Code & Name
+                </div>
+                <div class="slab-field-text">
+                  <mat-form-field appearance="outline" class="width-200px">
+                    <mat-select placeholder="Plant Code" multiple>
+                      <mat-option value="volvo"> Plant Code 1 </mat-option>
+                      <mat-option value="saab"> Plant Code 2 </mat-option>
+                      <mat-option value="opel"> Plant Code 3 </mat-option>
+                    </mat-select>
+                  </mat-form-field>
+                </div>
+              </div>
+
+              <div class="metro-commision-item">
+                <div class="slab-field-title width-200px">
+                  GU/BT Plant Rate Type
+                </div>
+
+                <div class="multi-wrap">
+
+                <div class="slab-field-text">
+                  <div class="plant-code"> Plant 1 - code</div>
+                  <mat-form-field appearance="outline" class="width-90px margin-right-5px">
+                    <mat-select placeholder="Standard">
+                      <mat-option value="volvo"> Standard </mat-option>
+                      <mat-option value="saab"> Slab Based </mat-option>
+                    </mat-select>
+                  </mat-form-field>
+                </div>
+
+                <div class="slab-field-text">
+                  <div class="plant-code"> Plant 2 - code</div>
+                  <mat-form-field appearance="outline" class="width-90px margin-right-5px">
+                    <mat-select placeholder="Standard">
+                      <mat-option value="volvo"> Standard </mat-option>
+                      <mat-option value="saab"> Slab Based </mat-option>
+                    </mat-select>
+                  </mat-form-field>
+                </div>
+
+                <div class="slab-field-text">
+                  <div class="plant-code"> Plant 3 - code</div>
+                  <mat-form-field appearance="outline" class="width-90px margin-right-5px">
+                    <mat-select placeholder="Standard">
+                      <mat-option value="volvo"> Standard </mat-option>
+                      <mat-option value="saab"> Slab Based </mat-option>
+                    </mat-select>
+                  </mat-form-field>
+                </div>
+
+                <div class="slab-field-text">
+                  <div class="plant-code"> Plant 4 - code</div>
+                  <mat-form-field appearance="outline" class="width-90px margin-right-5px">
+                    <mat-select placeholder="Standard">
+                      <mat-option value="volvo"> Standard </mat-option>
+                      <mat-option value="saab"> Slab Based </mat-option>
+                    </mat-select>
+                  </mat-form-field>
+                </div>
+              </div>
+
+              </div>
+
+              <div class="metro-commision-item">
+                <div class="slab-field-title width-200px">
+                  GU/BT plant Standard Commission
+                </div>
+                <div class="slab-field-text">
+                  <mat-form-field class="example-full-width width-200px">
+                    <input matInput type="number">
+                  </mat-form-field>
+                </div>
+              </div>
+
+              <hr>
+
+              <div class="slab-field-title margin-top-15px">
+                GU/BT plant Slab Commission
+              </div>
+
+              <div class="slab-fields-saved">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Slab (MT)From</th>
+                    <th>Slab (MT)To</th>
+                    <th>Commission</th>
+                    <th class="width-50px">Add</th>
+                    <th class="width-50px">Delete</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>0</td>
+                    <td>1000</td>
+                    <td>Rs. 25</td>
+                    <td>
+                      <div class="add-button">
+                        <button mat-fab (click)="openLoiDetail()" class="add">
+                          <mat-icon>add</mat-icon>
+                        </button>
+
+                      </div>
+                    </td>
+                    <td>
+                      <div class="add-button">
+                        <button mat-mini-fab aria-label="Add Button" class="delete">
+                          <mat-icon>delete</mat-icon>
+                        </button>
+                      </div>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            </div>
+          </div>
+          <div class="slab-sec padding-left-20px left-border-orange">
+            <div class="metro-commission">
+              <div class="metro-commision-item">
+                <div class="slab-field-title width-200px">
+                  Inter Company Sale Applicable
+                </div>
+                <div class="slab-field-text">
+                  <mat-radio-group aria-label="Select an option">
+                    <mat-radio-button value="1" checked="true" class="yellow-radio">Yes</mat-radio-button>
+                    <mat-radio-button value="2">No</mat-radio-button>
+                  </mat-radio-group>
+                </div>
+              </div>
+
+              <div class="metro-commision-item">
+                <div class="slab-field-title width-200px">
+                  Commission
+                </div>
+                <div class="slab-field-text">
+                  <mat-form-field class="example-full-width width-200px">
+                    <input matInput type="number">
+                  </mat-form-field>
+                </div>
+              </div>
+
+            </div>
+
+            <div class="metro-commission">
+              <div class="metro-commision-item">
+                <div class="slab-field-title width-200px">
+                  Inter Unit Sales Applicable
+                </div>
+                <div class="slab-field-text">
+                  <mat-radio-group aria-label="Select an option">
+                    <mat-radio-button value="1" checked="true" class="yellow-radio">Yes</mat-radio-button>
+                    <mat-radio-button value="2">No</mat-radio-button>
+                  </mat-radio-group>
+                </div>
+              </div>
+
+              <div class="metro-commision-item">
+                <div class="slab-field-title width-200px">
+                  Inter Unit Sales Commission
+                </div>
+                <div class="slab-field-text">
+                  <mat-form-field class="example-full-width width-200px">
+                    <input matInput type="number">
+                  </mat-form-field>
+                </div>
+              </div>
+
+              <hr>
+
+              <div class="metro-commission">
+                <div class="metro-commision-item">
+                  <div class="slab-field-title width-200px">
+                    Other Depo Commission/ Deduction applicable?
+                  </div>
+                  <div class="slab-field-text">
+                    <mat-radio-group aria-label="Select an option">
+                      <mat-radio-button value="1" checked="true" class="yellow-radio">Yes</mat-radio-button>
+                      <mat-radio-button value="2">No</mat-radio-button>
+                    </mat-radio-group>
+                  </div>
+                </div>
+
+                <div class="metro-commision-item">
+                  <div class="slab-field-title width-200px">
+                    Sales to Other Depo Commission
+                  </div>
+                  <div class="slab-field-text">
+                    <mat-form-field class="example-full-width width-200px">
+                      <input matInput type="number">
+                    </mat-form-field>
+                  </div>
+                </div>
+
+                <div class="metro-commision-item">
+                  <div class="slab-field-title width-200px">
+                    Sales from Other Depo Commission
+                  </div>
+                  <div class="slab-field-text">
+                    <mat-form-field class="example-full-width width-200px">
+                      <input matInput type="number">
+                    </mat-form-field>
+                  </div>
+                </div>
+
+              </div>
+
+            </div>
+          </div>
+        </div>
+
+
+
+
+        <hr>
+
+        <div class="buttons">
+          <button class="save-draft" (click)="xpandStatus = xpandStatus ? false : true">
+            <svg xmlns="http://www.w3.org/2000/svg" height="18px" viewBox="0 -960 960 960" width="24px" fill="#fff200"><path d="M200-120v-640q0-33 23.5-56.5T280-840h400q33 0 56.5 23.5T760-760v640L480-240 200-120Zm80-122 200-86 200 86v-518H280v518Zm0-518h400-400Z"/></svg>
+            Save as Draft
+          </button>
+          <button class="save-next-prev">
+            Save & Next
+            <svg xmlns="http://www.w3.org/2000/svg" height="18px" viewBox="0 -960 960 960" width="24px" fill="#5f6368"><path d="M504-480 320-664l56-56 240 240-240 240-56-56 184-184Z"/></svg>
+          </button>
+      </div>
+      </mat-tab>
+
+      <mat-tab label="Deduction on Direct Sales">
+        <div class="slab-commission-sec">
+          <div class="slab-sec">
+            <div class="metro-commision-item">
+              <div class="slab-field-title align-item-center width-200px">
+                Dedcution on Direct Sales Applicable
+              </div>
+
+              <div class="slab-title-text">
+                <mat-radio-group aria-label="Select an option">
+                  <mat-radio-button value="1" checked="true" class="yellow-radio">Yes</mat-radio-button>
+                  <mat-radio-button value="2">No</mat-radio-button>
+                </mat-radio-group>
+              </div>
+            </div>
+
+            <div class="slab-range">
+              <div class="ccnf-address-tittle width-200px align-item-center margin-top-15px">
+                Slab Range
+              </div>
+
+              <mat-form-field class="example-full-width margin-left-10px">
+                <input matInput type="number">
+              </mat-form-field>
+
+              <span class="to">To</span>
+
+              <mat-form-field class="example-full-width">
+                <input matInput type="number">
+              </mat-form-field>
+
+            </div>
+
+            <div class="slab-fields-saved">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Slab (MT)From</th>
+                    <th>Slab (MT)To</th>
+                    <th>Commission</th>
+                    <th class="width-50px">Add</th>
+                    <th class="width-50px">Delete</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>0</td>
+                    <td>1000</td>
+                    <td>Rs. 25</td>
+                    <td>
+                      <div class="add-button">
+                        <button mat-fab (click)="openLoiDetail()" class="add">
+                          <mat-icon>add</mat-icon>
+                        </button>
+
+                      </div>
+                    </td>
+                    <td>
+                      <div class="add-button">
+                        <button mat-mini-fab aria-label="Add Button" class="delete">
+                          <mat-icon>delete</mat-icon>
+                        </button>
+                      </div>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <div class="slab-sec padding-left-20px left-border-orange">
+            <div class="metro-commision-item">
+              <div class="slab-field-title align-item-center width-200px">
+                Reduced Commission If order booking  done by company?
+              </div>
+
+              <div class="slab-title-text">
+                <mat-radio-group aria-label="Select an option">
+                  <mat-radio-button value="1" checked="true" class="yellow-radio">Yes</mat-radio-button>
+                  <mat-radio-button value="2">No</mat-radio-button>
+                </mat-radio-group>
+              </div>
+            </div>
+
+            <div class="metro-commision-item">
+              <div class="slab-field-title width-200px">
+                Commission
+              </div>
+              <div class="slab-field-text">
+                <mat-form-field class="example-full-width width-200px">
+                  <input matInput type="number">
+                </mat-form-field>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <hr>
+
+        <div class="buttons">
+          <button class="save-draft" (click)="xpandStatus = xpandStatus ? false : true">
+            <svg xmlns="http://www.w3.org/2000/svg" height="18px" viewBox="0 -960 960 960" width="24px" fill="#fff200"><path d="M200-120v-640q0-33 23.5-56.5T280-840h400q33 0 56.5 23.5T760-760v640L480-240 200-120Zm80-122 200-86 200 86v-518H280v518Zm0-518h400-400Z"/></svg>
+            Save as Draft
+          </button>
+          <button class="save-next-prev">
+            Save
+            <svg xmlns="http://www.w3.org/2000/svg" height="18px" viewBox="0 -960 960 960" width="24px" fill="#5f6368"><path d="M504-480 320-664l56-56 240 240-240 240-56-56 184-184Z"/></svg>
+          </button>
+      </div>
+
+      </mat-tab>
+
+      <mat-tab label="Godown Keeper Reimbursement">
+        <div class="slab-commission-sec">
+          <div class="slab-sec">
+            <div class="metro-commision-item">
+              <div class="slab-field-title align-item-center width-200px">
+                Fixed rent for Godown Keeper applicable
+              </div>
+
+              <div class="slab-title-text">
+                <mat-radio-group aria-label="Select an option">
+                  <mat-radio-button value="1" checked="true" class="yellow-radio">Yes</mat-radio-button>
+                  <mat-radio-button value="2">No</mat-radio-button>
+                </mat-radio-group>
+              </div>
+            </div>
+
+            <div class="slab-range">
+              <div class="ccnf-address-tittle width-200px align-item-center">
+                &lt; 3 Gates
+              </div>
+
+              <mat-form-field class="example-full-width margin-left-10px">
+                <input matInput type="number">
+              </mat-form-field>
+            </div>
+
+            <div class="slab-range margin-top-15px">
+              <div class="ccnf-address-tittle width-200px align-item-center">
+                &gt; 3 Gates
+              </div>
+
+              <mat-form-field class="example-full-width margin-left-10px">
+                <input matInput type="number">
+              </mat-form-field>
+
+            </div>
+
+          </div>
+
+        </div>
+
+        <hr>
+
+        <div class="buttons">
+          <button class="save-draft" (click)="xpandStatus = xpandStatus ? false : true">
+            <svg xmlns="http://www.w3.org/2000/svg" height="18px" viewBox="0 -960 960 960" width="24px" fill="#fff200"><path d="M200-120v-640q0-33 23.5-56.5T280-840h400q33 0 56.5 23.5T760-760v640L480-240 200-120Zm80-122 200-86 200 86v-518H280v518Zm0-518h400-400Z"/></svg>
+            Save as Draft
+          </button>
+          <button class="save-next-prev">
+            Save
+            <svg xmlns="http://www.w3.org/2000/svg" height="18px" viewBox="0 -960 960 960" width="24px" fill="#5f6368"><path d="M504-480 320-664l56-56 240 240-240 240-56-56 184-184Z"/></svg>
+          </button>
+      </div>
+      </mat-tab>
+
+      <mat-tab label="Other Expense">
+        <div class="slab-commission-sec">
+          <form action="#" class="search-box width-100pct">
+            <button (click)="openLoiDetail()" class="add-office">
+              Add/View Office
+            </button>
+
+            <mat-form-field appearance="outline" class="width-200px">
+              <mat-select placeholder="Depot">
+                <mat-option value="volvo"> Depot 1 </mat-option>
+                <mat-option value="saab"> Depot 2 </mat-option>
+                <mat-option value="opel"> Depot 3 </mat-option>
+              </mat-select>
+            </mat-form-field>
+
+            <mat-form-field appearance="outline" class="width-200px">
+              <mat-select placeholder="12 District" multiple>
+                <mat-option value="volvo"> 12 District </mat-option>
+                <mat-option value="saab"> 12 District </mat-option>
+                <mat-option value="opel"> 12 District </mat-option>
+                <mat-option value="volvo"> 12 District </mat-option>
+              </mat-select>
+            </mat-form-field>
+
+            <mat-form-field appearance="outline" class="width-200px">
+              <mat-select placeholder="Office">
+                <mat-option value="volvo"> Office 1 </mat-option>
+                <mat-option value="saab"> Office 2 </mat-option>
+                <mat-option value="opel"> Office 3 </mat-option>
+                <mat-option value="volvo"> Office 4 </mat-option>
+              </mat-select>
+            </mat-form-field>
+
+            <button class="add-office2 right-align-item margin-right-15px">
+              Add Office
+            </button>
+          </form>
+        </div>
+        <hr>
+        <div class="expense-table">
+          <table>
+            <thead>
+              <tr>
+                <th>Expense Type</th>
+                <th>Applicable</th>
+                <th>Max Value</th>
+                <th>Sharing Percentage</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Electricity Charges</td>
+                <td>
+                  <mat-radio-group aria-label="Select an option">
+                    <mat-radio-button value="1" checked="true" class="yellow-radio">Yes</mat-radio-button>
+                    <mat-radio-button value="2">No</mat-radio-button>
+                  </mat-radio-group>
+                </td>
+                <td>
+                  <mat-form-field class="example-full-width width-125px">
+                    <input matInput type="number">
+                  </mat-form-field></td>
+                <td>
+                  <mat-form-field class="example-full-width width-90px">
+                    <input matInput type="number">
+                  </mat-form-field> %
+                </td>
+
+              </tr>
+
+              <tr>
+                <td>Landline</td>
+                <td>
+                  <mat-radio-group aria-label="Select an option">
+                    <mat-radio-button value="1" checked="true" class="yellow-radio">Yes</mat-radio-button>
+                    <mat-radio-button value="2">No</mat-radio-button>
+                  </mat-radio-group>
+                </td>
+                <td>
+                  <mat-form-field class="example-full-width width-125px">
+                    <input matInput type="number">
+                  </mat-form-field></td>
+                <td>
+                  <mat-form-field class="example-full-width width-90px">
+                    <input matInput type="number">
+                  </mat-form-field> %
+                </td>
+
+              </tr>
+
+              <tr>
+                <td>Mobile</td>
+                <td>
+                  <mat-radio-group aria-label="Select an option">
+                    <mat-radio-button value="1" checked="true" class="yellow-radio">Yes</mat-radio-button>
+                    <mat-radio-button value="2">No</mat-radio-button>
+                  </mat-radio-group>
+                </td>
+                <td>
+                  <mat-form-field class="example-full-width width-125px">
+                    <input matInput type="number">
+                  </mat-form-field></td>
+                <td>
+                  <mat-form-field class="example-full-width width-90px">
+                    <input matInput type="number">
+                  </mat-form-field> %
+                </td>
+
+              </tr>
+
+              <tr>
+                <td>Office Connection</td>
+                <td>
+                  <mat-radio-group aria-label="Select an option">
+                    <mat-radio-button value="1" checked="true" class="yellow-radio">Yes</mat-radio-button>
+                    <mat-radio-button value="2">No</mat-radio-button>
+                  </mat-radio-group>
+                </td>
+                <td>
+                  <mat-form-field class="example-full-width width-125px">
+                    <input matInput type="number">
+                  </mat-form-field></td>
+                <td>
+                  <mat-form-field class="example-full-width width-90px">
+                    <input matInput type="number">
+                  </mat-form-field> %
+                </td>
+
+              </tr>
+
+              <tr>
+                <td>Connection at Godown</td>
+                <td>
+                  <mat-radio-group aria-label="Select an option">
+                    <mat-radio-button value="1" checked="true" class="yellow-radio">Yes</mat-radio-button>
+                    <mat-radio-button value="2">No</mat-radio-button>
+                  </mat-radio-group>
+                </td>
+                <td>
+                  <mat-form-field class="example-full-width width-125px">
+                    <input matInput type="number">
+                  </mat-form-field></td>
+                <td>
+                  <mat-form-field class="example-full-width width-90px">
+                    <input matInput type="number">
+                  </mat-form-field> %
+                </td>
+
+              </tr>
+
+              <tr>
+                <td>Connectivity Expense</td>
+                <td>
+                  <mat-radio-group aria-label="Select an option">
+                    <mat-radio-button value="1" checked="true" class="yellow-radio">Yes</mat-radio-button>
+                    <mat-radio-button value="2">No</mat-radio-button>
+                  </mat-radio-group>
+                </td>
+                <td>
+                  <mat-form-field class="example-full-width width-125px">
+                    <input matInput type="number">
+                  </mat-form-field></td>
+                <td>
+                  <mat-form-field class="example-full-width width-90px">
+                    <input matInput type="number">
+                  </mat-form-field> %
+                </td>
+
+              </tr>
+
+              <tr>
+                <td>Internet</td>
+                <td>
+                  <mat-radio-group aria-label="Select an option">
+                    <mat-radio-button value="1" checked="true" class="yellow-radio">Yes</mat-radio-button>
+                    <mat-radio-button value="2">No</mat-radio-button>
+                  </mat-radio-group>
+                </td>
+                <td>
+                  <mat-form-field class="example-full-width width-125px">
+                    <input matInput type="number">
+                  </mat-form-field></td>
+                <td>
+                  <mat-form-field class="example-full-width width-90px">
+                    <input matInput type="number">
+                  </mat-form-field> %
+                </td>
+
+              </tr>
+
+              <tr>
+                <td>Courier</td>
+                <td>
+                  <mat-radio-group aria-label="Select an option">
+                    <mat-radio-button value="1" checked="true" class="yellow-radio">Yes</mat-radio-button>
+                    <mat-radio-button value="2">No</mat-radio-button>
+                  </mat-radio-group>
+                </td>
+                <td>
+                  <mat-form-field class="example-full-width width-125px">
+                    <input matInput type="number">
+                  </mat-form-field></td>
+                <td>
+                  <mat-form-field class="example-full-width width-90px">
+                    <input matInput type="number">
+                  </mat-form-field> %
+                </td>
+
+              </tr>
+
+              <tr>
+                <td>Printing  & Stationary</td>
+                <td>
+                  <mat-radio-group aria-label="Select an option">
+                    <mat-radio-button value="1" checked="true" class="yellow-radio">Yes</mat-radio-button>
+                    <mat-radio-button value="2">No</mat-radio-button>
+                  </mat-radio-group>
+                </td>
+                <td>
+                  <mat-form-field class="example-full-width width-125px">
+                    <input matInput type="number">
+                  </mat-form-field></td>
+                <td>
+                  <mat-form-field class="example-full-width width-90px">
+                    <input matInput type="number">
+                  </mat-form-field> %
+                </td>
+
+              </tr>
+
+              <tr>
+                <td>Computer Consumables</td>
+                <td>
+                  <mat-radio-group aria-label="Select an option">
+                    <mat-radio-button value="1" checked="true" class="yellow-radio">Yes</mat-radio-button>
+                    <mat-radio-button value="2">No</mat-radio-button>
+                  </mat-radio-group>
+                </td>
+                <td>
+                  <mat-form-field class="example-full-width width-125px">
+                    <input matInput type="number">
+                  </mat-form-field></td>
+                <td>
+                  <mat-form-field class="example-full-width width-90px">
+                    <input matInput type="number">
+                  </mat-form-field> %
+                </td>
+
+              </tr>
+
+              <tr>
+                <td>Photocopy Charges</td>
+                <td>
+                  <mat-radio-group aria-label="Select an option">
+                    <mat-radio-button value="1" checked="true" class="yellow-radio">Yes</mat-radio-button>
+                    <mat-radio-button value="2">No</mat-radio-button>
+                  </mat-radio-group>
+                </td>
+                <td>
+                  <mat-form-field class="example-full-width width-125px">
+                    <input matInput type="number">
+                  </mat-form-field></td>
+                <td>
+                  <mat-form-field class="example-full-width width-90px">
+                    <input matInput type="number">
+                  </mat-form-field> %
+                </td>
+
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <hr>
+
+        <div class="buttons">
+          <button class="save-draft" (click)="xpandStatus = xpandStatus ? false : true">
+            <svg xmlns="http://www.w3.org/2000/svg" height="18px" viewBox="0 -960 960 960" width="24px" fill="#fff200"><path d="M200-120v-640q0-33 23.5-56.5T280-840h400q33 0 56.5 23.5T760-760v640L480-240 200-120Zm80-122 200-86 200 86v-518H280v518Zm0-518h400-400Z"/></svg>
+            Save as Draft
+          </button>
+          <button class="save-next-prev">
+            Save & Submit
+            <svg xmlns="http://www.w3.org/2000/svg" height="18px" viewBox="0 -960 960 960" width="24px" fill="#5f6368"><path d="M400-304 240-464l56-56 104 104 264-264 56 56-320 320Z"/></svg>
+          </button>
+      </div>
+
+
+
+
+      </mat-tab>
+
+    </mat-tab-group>

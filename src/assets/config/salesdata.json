@@ -1,0 +1,78 @@
+{
+
+  "sales": [
+    {
+      "id": 1,
+      "year": 2005,
+      "amount": 500,
+      "colorcode": "green"
+    },
+    {
+      "id": 2,
+      "year": 2005,
+      "amount": 500,
+      "colorcode": "red"
+    },
+    {
+      "id": 3,
+      "year": 2018,
+      "amount": 700,
+      "colorcode": "blue"
+    },
+    {
+      "id": 4,
+      "year": 2010,
+      "amount": 900,
+      "colorcode": "pink"
+    },
+    {
+      "id": 5,
+      "year": 2017,
+      "amount": 1000,
+      "colorcode": "green"
+    }
+  ],
+  "salesBar": [
+    {
+      "year": 2005,
+      "amount": 900,
+      "colorcode": ""
+    },
+    {
+      "year": 2005,
+      "amount": 1000,
+      "colorcode": ""
+    },
+    {
+      "year": 2018,
+      "amount": 700,
+      "colorcode": ""
+    },
+    {
+      "year": 2010,
+      "amount": 900,
+      "colorcode": ""
+    },
+    {
+      "year": 2017,
+      "amount": 1000,
+      "colorcode": ""
+    }
+  ],
+  "utclSales": [
+    {
+      "type": "Cement",
+      "Cement": 123123,
+      "NetSale": 77710.79,
+      "RMCSale": 780.02,
+      "date": "April-24"
+    },
+    {
+      "type": "UBS",
+      "UBS": 133597,
+      "UBSAlliedSale": 133597.8,
+      "UBSSteelSale": 4029881.18,
+      "date": "April-24"
+    }
+  ]
+}

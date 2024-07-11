@@ -1,0 +1,10 @@
+<select class="form-control" (change)="onSelectionChange($event)" [disabled]="isDisabled">
+  <!-- <option value=''>{{configuration.selectPlaceHolder}}</option> -->
+  <ng-container *ngFor="let selectionItem of items; let i = index">
+    <option value={{selectionItem.key}}>
+      {{selectionItem.value}}
+    </option>
+  </ng-container>
+</select>
+<label for="dropdown-label" [hidden]="isLabelHidden"> {{configuration.dropdownLabel}} <span
+    class="mand">*</span></label>

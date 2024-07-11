@@ -1,0 +1,226 @@
+@font-face {
+  font-family: 'roboto';
+  src: url('../../../../assets/fonts/Roboto-Regular.ttf') format('truetype'); /* Path to your font file */
+}
+
+@font-face {
+  font-family: 'roboto-med';
+  src: url('../../../../assets/fonts/Roboto-Medium.ttf') format('truetype'); /* Path to your font file */
+}
+
+@font-face {
+  font-family: 'roboto-bold';
+  src: url('../../../../assets/fonts/Roboto-Bold.ttf') format('truetype'); /* Path to your font file */
+}
+
+.maincontainer {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url(../../../../assets/img/rmc-grey-bg5.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+  display: flex;
+justify-content: center;
+align-items: center;
+}
+.logincontainer {
+  position: relative;
+  width: 70%;
+  margin: 0px auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #fff;
+  border-radius: 20px;
+  box-shadow: 3px 2px 6px 3px #8d8d8d;
+
+  @media only screen and (min-width:768px) and (max-width:1024px){
+      background-size: cover;
+      width: 80%;
+  }
+
+  @media only screen and (min-width:320px) and (max-width:767px){
+      flex-direction: column;
+  }
+}
+
+.loginpagelogo {
+  position: absolute;
+  top:20px;
+  left: 20px;
+}
+
+.loginpagelogo img {
+  width: 80px;
+  height: auto;
+}
+
+.logindiv1, .logindiv2 {
+  width: 50%;
+  height: 490px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  @media only screen and (min-width:768px) and (max-width:1023px) {
+      height: 330px;
+  }
+
+  @media only screen and (min-width:1024px) and (max-width:1024px){
+      height: 460px;
+  }
+
+  @media only screen and (min-width:320px) and (max-width:767px){
+      width: 85%;
+      height: 350px;
+  }
+}
+
+.logindiv2{
+  border-radius: 0 20px 20px 0;
+  background-image: url(../../../../assets/img/rmc_bg1.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center center;
+
+  @media only screen and (min-width:320px) and (max-width:767px){
+      border-radius: 0px;
+      background-position: center center;
+  }
+
+}
+.logindiv2 img {
+  width: 100%;
+  height: auto;
+}
+
+.login-box {
+  width: 320px;
+  min-height: 300px;
+  display: flex;
+  justify-content: flex-start;
+  align-items:center;
+  flex-direction: column;
+  vertical-align: top;
+
+  @media only screen and (min-width:768px) {
+      width: 250px;
+  }
+}
+
+.input-container {
+  position: relative;
+  width: 100%;
+  display: flex;
+}
+
+.margin-top-20px {
+  margin-top: 20px;
+}
+
+.input-container .icon {
+  position: absolute;
+  width: 25px;
+  height: 22px;
+  top: 0px;
+  left: 0px;
+  color: #333;
+  border: 1px solid #ababab;
+  border-right: 0px;
+  border-radius: 7px 0 0 7px;
+  background-color: #fff200;
+  padding: 10px 7px 4px 20px;
+  color: #666;
+}
+
+.input-container .icon img {
+  width: 15px;
+}
+
+.input-container input {
+  width: 100%;
+  height: 36px;
+  max-width: 400px;
+  border-radius: 7px;
+  border: 1px solid #ADB0CD;
+  padding: 0 20px 0 20px;
+  margin-bottom: 20px;
+
+  @media only screen and (min-width:768px) {
+      width: 100%;
+  }
+}
+
+
+.input-container input:focus {
+  border: 1px solid #ADB0CD !important;
+}
+
+input.username::before {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 40px;
+  height: 35px;
+  background-color: #fff200;
+  color: #000;
+  content: "aa ";
+}
+
+input::placeholder {
+  color: #ADB0CD;
+}
+
+.loginbutton {
+  width: 100%;
+}
+
+.loginbutton button{
+  font-family: "roboto-med";
+  width: 100%;
+  border-radius: 7px;
+  background-color: #3b81b9;
+  color: #fff;
+  font-size: 15px;
+  text-align: center;
+  padding: 10px;
+  border: 0px;
+  cursor: pointer;
+  float: right;
+  margin: 10px 0 0 0;
+  box-shadow: 1px 2px 2px 2px #d1d1d1;
+  transition: ease-in 0.3s;
+}
+
+.loginbutton button:hover{
+  background-color: #28699d;
+  box-shadow: 0px 0px 2px 2px #d1d1d1;
+}
+
+
+.logintitle {
+  font-family: 'roboto-med';
+  font-size: 30px;
+  // color: #0012FF;
+  margin-bottom: 30px;
+}
+
+::ng-deep .mat-mdc-tab .mdc-tab__text-label {
+  font-size: 14px;
+  font-weight: 600;
+}
+
+::ng-deep .mat-mdc-tab .mdc-tab-indicator__content--underline {
+  border-color:#f17801 !important;
+}
+
+::ng-deep .mat-mdc-tab.mdc-tab--active .mdc-tab__text-label {
+  color: #f17801 !important;
+}
+
+::ng-deep .mat-mdc-tab-body-wrapper {
+  border-top: 1px solid #f17801;
+}
